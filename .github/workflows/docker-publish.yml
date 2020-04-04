@@ -5,11 +5,11 @@ on:
     - cron:  '0 4 * * *' # daily at 4am
 
 jobs:
-  build:
+  build-and-publish:
     name: Docker Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
       - name: Publish to Docker Hub
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
