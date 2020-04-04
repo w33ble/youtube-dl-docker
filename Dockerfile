@@ -15,7 +15,7 @@ RUN set -xe \
     && make
 
 # add the build to the web container
-FROM node:12-alpine
+FROM python:3-alpine
 
 WORKDIR /data
 
