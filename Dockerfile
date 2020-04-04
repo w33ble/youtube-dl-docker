@@ -27,8 +27,6 @@ RUN set -xe \
     && chmod a+rx /usr/local/bin/youtube-dl \
     && apk add --no-cache ca-certificates \
                           ffmpeg \
-                          openssl \
-                          python3 \
-    && ln -s /usr/bin/python3 /usr/bin/python
+                          openssl
 
 ENTRYPOINT ["youtube-dl"]
