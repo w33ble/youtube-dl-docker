@@ -1,0 +1,21 @@
+name: Publish to Docker Hub
+
+on:
+  schedule:
+    - cron:  '0 4 * * *' # daily at 4am
+
+jobs:
+  build:
+    name: Docker Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Publish to Docker Hub
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: w33ble/youtube-dl
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          snapshot: true
+          # buildoptions: "--force-rm"
+          cache: ${{ github.event_name != 'schedule' }}
