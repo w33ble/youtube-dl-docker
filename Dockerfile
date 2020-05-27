@@ -14,7 +14,7 @@ WORKDIR /build/youtube-dl-master
 RUN set -xe \
     && make
 
-# add the build to the web container
+# add the build to the runtime container
 FROM python:3-alpine
 
 WORKDIR /data
@@ -25,8 +25,12 @@ COPY --from=build /build/youtube-dl-master/youtube-dl /usr/local/bin
 # install dependencies
 RUN set -xe \
     && chmod a+rx /usr/local/bin/youtube-dl \
-    && apk add --no-cache ca-certificates \
-                          ffmpeg \
-                          openssl
+    && echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
+    && apk update \
+    && apk add --no-cache \
+        ffmpeg \
+        atomicparsley \
+        ca-certificates \
+        openssl
 
 ENTRYPOINT ["youtube-dl"]
