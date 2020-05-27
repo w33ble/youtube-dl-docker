@@ -26,7 +26,7 @@ COPY --from=build /build/youtube-dl-master/youtube-dl /usr/local/bin
 RUN set -xe \
     && chmod a+rx /usr/local/bin/youtube-dl \
     && echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
-    && apk update \
+    && apk update --no-cache \
     && apk add --no-cache \
         ffmpeg \
         atomicparsley \
