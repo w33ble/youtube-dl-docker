@@ -6,7 +6,7 @@ WORKDIR /build
 RUN set -xe \
     && apt-get update -y \
     && apt-get install -y zip pandoc \
-    && curl -L https://github.com/ytdl-org/youtube-dl/archive/master.zip -o youtube-dl-master.zip \
+    && curl -L https://gitlab.com/dstftw/youtube-dl/-/archive/master/youtube-dl-master.zip -o youtube-dl-master.zip \
     && unzip youtube-dl-master.zip
 
 WORKDIR /build/youtube-dl-master
