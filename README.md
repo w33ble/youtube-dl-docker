@@ -28,7 +28,7 @@ docker run -i --rm -u $(id -u):$(id -g) -v "$(pwd)":/data w33ble/youtube-dl [opt
 This will download the video or audio from the provided URL into the current working path. You can pass in any command line arguments that [youtube-dl accepts](https://github.com/ytdl-org/youtube-dl/blob/master/README.md#readme). As an example, you can specify your desired format like so:
 
 ```sh
-docker run -i --rm -u $(id -u):$(id -g) -v "$(pwd)":/data w33ble/youtube-dl -f "bestvideo[ext=mp4][heigh  t<=1080]+bestaudio[ext=m4a]/bestvideo+bestaudio/best" <url to download>
+docker run -i --rm -u $(id -u):$(id -g) -v "$(pwd)":/data w33ble/youtube-dl -f "bestvideo[ext=mp4][height<=1080]+bestaudio[ext=m4a]/bestvideo+bestaudio/best" <url to download>
 ```
 
 ### Building locally
