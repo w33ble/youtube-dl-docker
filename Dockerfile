@@ -6,13 +6,13 @@ WORKDIR /build
 RUN set -xe \
     && apt-get update -y \
     && apt-get install -y zip pandoc \
-    && curl -L https://github.com/ytdl-org/youtube-dl/archive/master.zip -o youtube-dl-master.zip \
-    && unzip youtube-dl-master.zip
+    && curl -L https://github.com/yt-dlp/yt-dlp/archive/refs/heads/master.zip -o youtube-dlp-master.zip \
+    && unzip youtube-dlp-master.zip
 
-WORKDIR /build/youtube-dl-master
+WORKDIR /build/yt-dlp-master
 
 RUN set -xe \
-    && make
+    && make yt-dlp
 
 # add the build to the runtime container
 FROM python:3-alpine
@@ -20,11 +20,11 @@ FROM python:3-alpine
 WORKDIR /data
 
 # copy the build
-COPY --from=build /build/youtube-dl-master/youtube-dl /usr/local/bin
+COPY --from=build /build/yt-dlp-master/yt-dlp /usr/local/bin
 
 # install dependencies
 RUN set -xe \
-    && chmod a+rx /usr/local/bin/youtube-dl \
+    && chmod a+rx /usr/local/bin/yt-dlp \
     && echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
     && apk update --no-cache \
     && apk add --no-cache \
@@ -33,4 +33,4 @@ RUN set -xe \
         ca-certificates \
         openssl
 
-ENTRYPOINT ["youtube-dl"]
+ENTRYPOINT ["yt-dlp"]
