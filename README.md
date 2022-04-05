@@ -1,6 +1,6 @@
 # youtube-dl in Docker
 
-Docker image for [youtube-dl](https://ytdl-org.github.io/youtube-dl/), built from source. Available on [Docker Hub](https://hub.docker.com/r/w33ble/youtube-dl).
+Docker image for [yt-dlp](https://github.com/yt-dlp/yt-dlp), a fork of [youtube-dl](https://ytdl-org.github.io/youtube-dl/), built from source. Available on [Docker Hub](https://hub.docker.com/r/w33ble/youtube-dl).
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/w33ble/youtube-dl-web/master/LICENSE)
 [![Project Status](https://img.shields.io/badge/status-stable-limgreen.svg)](https://nodejs.org/api/documentation.html#documentation_stability_index)
