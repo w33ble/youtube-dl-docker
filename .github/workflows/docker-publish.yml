@@ -1,10 +1,11 @@
 name: Publish to Docker Hub
 
 on:
-  repository_dispatch:
-    types: manual-trigger
+  # repository_dispatch:
+  #   types: manual-trigger
   schedule:
     - cron:  '0 4 * * *' # daily at 4am
+  workflow_dispatch:
 
 jobs:
   build-and-publish:
