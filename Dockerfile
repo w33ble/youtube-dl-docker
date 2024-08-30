@@ -32,5 +32,7 @@ RUN set -xe \
         atomicparsley \
         ca-certificates \
         openssl
+RUN pip3 install 'requests>=2.31.0'
 
 ENTRYPOINT ["yt-dlp"]
+
