@@ -19,6 +19,9 @@ FROM python:3-alpine
 
 WORKDIR /data
 
+# allow yt-dlp to write to /.cache
+RUN mkdir /.cache && chmod 777 /.cache
+
 # copy the build
 COPY --from=build /build/yt-dlp-master/yt-dlp /usr/local/bin
 
